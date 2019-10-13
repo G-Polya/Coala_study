@@ -30,11 +30,11 @@ container = html.select('div.inner') # 파싱된 코드에서 div.inner를 골�
 #3. 반복하기
 
 for cont in container:
-    title = cont.select_one('dt.title')  # 한 컨테이너 안에 dt.title은 하나밖에 없기 때문에 select_one
+    title = cont.select_one('dt.title').text.strip()  # 한 컨테이너 안에 dt.title은 하나밖에 없기 때문에 select_one
     chn = cont.select_one('dd.chn')
     hit = cont.select_one('span.hit')
     like = cont.select_one('span.like')
-    print(title.text.strip())
+    print(title)
     print(chn.text.strip())
     print(hit.text.strip())
     print(like.text.strip())
