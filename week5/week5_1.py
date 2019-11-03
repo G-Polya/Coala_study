@@ -32,9 +32,16 @@ for m in movies:
     # 장르
     genre = m.select("dl.info_txt1 dd:nth-of-type(1) a")
     # 감독
-    director = m.select("dl.info_txt1 dd:nth-of-type(1) a")
+    director = m.select("dl.info_txt1 dd:nth-of-type(2) a")
     # 배우
-    actor = m.select("dl.info_txt1 dd:nth-of-type(1) a")
+    actor = m.select("dl.info_txt1 dd:nth-of-type(3) a")
+
+    if float(score) < 8.5:
+        continue
+
+    genre_all = m.select_one("dl.info_txt1 dd:nth-of-type(1) span.link_txt")
+    if "액션" not in genre_all.text:
+        continue
 
     print(title)
     print(score)
