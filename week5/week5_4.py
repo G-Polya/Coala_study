@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from urllib.request import  urlretrieve
 
 raw = requests.get("https://movie.naver.com/movie/running/current.nhn",
                    headers={'User-Agent':'Mozilla/5.0'})
@@ -23,11 +24,18 @@ for m in movies:
     # 컨테이너 div.score_result>ul>li
     # 평점 div.star_score em
     # 리뷰 div.score_reple p
-    reviews = each_html.select("div.score_result>ul>li")
-    for r in reviews:
-        stars = r.select_one("div.star_score em").text
-        reple = r.select_one("div.score_reple p").text.strip()
+    # reviews = each_html.select("div.score_result>ul>li")
+    # for r in reviews:
+    #     stars = r.select_one("div.star_score em").text
+    #     reple = r.select_one("div.score_reple p").text.strip()
+    #
+    #     print(stars, reple)
 
-        print(stars, reple)
+    poster = each_html.select_one("div.mv_info_area div.poster img")
+    poster_src = poster.attrs["src"]
+    # print(poster_src)
+
+    urlretrieve(poster_src,"poster/"+title.text[:2]+".png")
+
     # https://movie.naver.com/movie/bi/mi/basic.nhn?code=167605
     # /movie/bi/mi/basic.nhn?code=167605
