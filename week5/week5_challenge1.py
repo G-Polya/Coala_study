@@ -21,7 +21,7 @@ for movie in movies:
     info = movie.select("div.txt-block")
     director = info[0].select("span > a")
     actor = info[1].select("div.txt-block > a")
-    #genre_info = movie.select("td.overivew p")
+    
     genre_all = movie.select_one("p.cert-runtime-genre").text
     # director = movie.select("div:nth-of-type(3) span > a")
     # actor = movie.select("div:nth-of-type(4) > a")
