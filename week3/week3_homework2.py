@@ -7,7 +7,7 @@ for page in range(1, 4):
 
     html = BeautifulSoup(raw.text,'html.parser')
 
-    news_container = html.select('div.cont_inner')
+    news_container = html.select('div.coll_cont>ul>li')
 
     for news in news_container:
         title = news.select_one('a.f_link_b').text
