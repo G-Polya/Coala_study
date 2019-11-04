@@ -25,7 +25,7 @@ for movie in movies:
     print("https://www.imdb.com/" + url)
     print("=" * 50)
 
-    urlretrieve(poster_src, "challege2_poster/" + title.text[:2] + ".png")
+    urlretrieve(poster_src, "../temp/" + title.text[:2] + ".png")
     # div.slate_wrapper div.poster img
 
 
