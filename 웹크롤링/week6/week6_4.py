@@ -1,6 +1,7 @@
 #셀레니움 연습하기
 from selenium import webdriver
 import time
+from selenium.common.exceptions import NoSuchElementException
 
 #1. 웹드라이버 켜기
 driver = webdriver.Chrome("./chromedriver")
@@ -34,7 +35,7 @@ for n in range(1,20):
 
         try:
             tel = s.find_element_by_css_selector("dd.tel").text
-        except:
+        except NoSuchElementException:
             tel = "전화번호 없음"
         print(name)
         print(address)
@@ -44,11 +45,11 @@ for n in range(1,20):
     # 페이지버튼 div.paginate > *
     page_bar = driver.find_elements_by_css_selector("div.paginate > *") # 7번째 버튼이없다
 
-    try:
+    try :
         if n % 5 != 0:
             page_bar[n%5 + 1].click()
         else :
             page_bar[6].click()
-    except:
+    except IndexError:
         print("수집완료")
         break
